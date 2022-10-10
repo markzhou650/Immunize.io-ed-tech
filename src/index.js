@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import HelloComponent from "./components/HelloComponent";
+import ChatBox from './components/ChatBox';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <HelloComponent />
+    <ChatBox />
   </React.StrictMode>
 );
