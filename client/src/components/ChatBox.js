@@ -1,9 +1,10 @@
-import { useState } from "react";
-import "./styles/chatbox.css";
+import React, { useState } from 'react';
+import './styles/chatbox.css';
 
-export default function ChatBox() {
+function ChatBox () {
   const [theChat, setTheChat] = useState([]);
   const [textInput, setTextInput] = useState("");
+  const [data, setData] = React.useState(null);
 
   const handleChange = (e) => {
     setTextInput(e.target.value);
@@ -15,12 +16,22 @@ export default function ChatBox() {
     setTextInput("");
   };
 
+  // Use fetch() to get request from node api
+  React.useEffect(() => {
+    fetch("/post")
+    .then((res) => res.json())
+    .then((data) => setData(data.message));
+  }, []);
+
   return (
     <div className="chatbox">
       <div className="chatbox__chatfeed">
         {theChat.map((text, i) => (
           <div key={i}>{text}</div>
         ))}
+
+        <p>{!data ? "Server is not connected..." : data}</p>
+
       </div>
       <div className="chatbox__input-fields">
         <textarea value={textInput} onChange={handleChange} />
@@ -29,3 +40,5 @@ export default function ChatBox() {
     </div>
   );
 }
+
+export default ChatBox;
