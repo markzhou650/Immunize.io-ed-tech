@@ -1,0 +1,108 @@
+
+[
+    {
+        "Question": "1+1?",
+        "Answer": "2",
+        "Incorrect1": "11",
+        "Incorrect2": "1",
+        "Incorrect3": "111"
+    },
+    {
+        "Question": "What is Obamas last name?",
+        "Answer": "Obama",
+        "Incorrect1": "Wang",
+        "Incorrect2": "Sakamata",
+        "Incorrect3": "Guichon"
+    },
+    {
+        "Question": "3x3?",
+        "Answer": "9",
+        "Incorrect1": "3",
+        "Incorrect2": "33",
+        "Incorrect3": "0"
+    },
+    {
+        "Question": "First month of the year?",
+        "Answer": "January",
+        "Incorrect1": "February",
+        "Incorrect2": "December",
+        "Incorrect3": "None of the above"
+    },
+    {
+        "Question": "The answer is 2",
+        "Answer": "2",
+        "Incorrect1": "3",
+        "Incorrect2": "4",
+        "Incorrect3": "22"
+    },
+    {
+        "Question": "What does CIT stand for at BCIT?",
+        "Answer": "Computer Information Technology",
+        "Incorrect1": "Cool Internet Things",
+        "Incorrect2": "Cheesy Information Topics",
+        "Incorrect3": "Computer Internet Topics"
+    },
+    {
+        "Question": "What is the powerhouse of the cell?",
+        "Answer": "Mitochondria",
+        "Incorrect1": "Ribosomes",
+        "Incorrect2": "Nucleolus",
+        "Incorrect3": "Cytoplasm"
+    },
+    {
+        "Question": "How do you spell Trello",
+        "Answer": "Trello",
+        "Incorrect1": "Trelbo",
+        "Incorrect2": "Elbow",
+        "Incorrect3": "Trellaw"
+    },
+    {
+        "Question": "5x5",
+        "Answer": "25",
+        "Incorrect1": "55",
+        "Incorrect2": "5",
+        "Incorrect3": "idk lol"
+    },
+    {
+        "Question": "What is the 6th month of the year?",
+        "Answer": "June",
+        "Incorrect1": "July",
+        "Incorrect2": "May",
+        "Incorrect3": "January"
+    },
+    {
+        "Question": "how many bits in a byte?",
+        "Answer": "8",
+        "Incorrect1": "2",
+        "Incorrect2": "4",
+        "Incorrect3": "16"
+    },
+    {
+        "Question": "What letter does the word 'Tim' start with?",
+        "Answer": "T",
+        "Incorrect1": "i",
+        "Incorrect2": "m",
+        "Incorrect3": "3.14"
+    },
+    {
+        "Question": "What colour represents STOP on traffic lights?",
+        "Answer": "Red",
+        "Incorrect1": "Green",
+        "Incorrect2": "Yellow",
+        "Incorrect3": "Purple"
+    },
+    {
+        "Question": "What planet are we on right now?",
+        "Answer": "Earth",
+        "Incorrect1": "Mars",
+        "Incorrect2": "Uranus",
+        "Incorrect3": "Venus"
+    },
+    {
+        "Question": "How many seconds are in a minute?",
+        "Answer": "60",
+        "Incorrect1": "100",
+        "Incorrect2": "600",
+        "Incorrect3": "6"
+    }
+    ]
