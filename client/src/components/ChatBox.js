@@ -18,7 +18,7 @@ function ChatBox () {
 
   // Use fetch() to get request from node api
   React.useEffect(() => {
-    fetch("/post")
+    fetch("/questions")
     .then((res) => res.json())
     .then((data) => setData(data.message));
   }, []);
