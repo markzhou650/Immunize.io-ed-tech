@@ -1,22 +1,57 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
+import { AppContext } from "../../context";
 
-const Options = (props) => {
-    const [data, setData] = React.useState(null);
-    React.useEffect(() => {
+
+const Options = ({ setState, state, actionProvider }) => {
+    const { topic, questionNumber, wrongAnswer, askingQuestions } = state
+    const globalState = useContext(AppContext)
+
+    useEffect(() => {
         fetch("/questions")
-        .then((res) => res.json())
-        // following is a hardcoded question, you may change the index for a different one
-        .then((data) => setData(data.questions[1].Question));
-      }, []);
+            .then((res) => res.json())
+            .then((data) => setState(prev => ({
+                ...prev,
+                allQuestions: data.questions
+            })))
+    }, [setState])
+
+    useEffect(() => {
+        if (topic && Array.isArray(topic)) {
+            actionProvider.askQuestion(topic[questionNumber].Question)
+        }
+    }, [topic, questionNumber])
+
+    useEffect(() => {
+        if (askingQuestions && wrongAnswer) {
+            globalState.setDisplayHelpWidget(true, topic[questionNumber].YTLink)
+        }
+    }, [askingQuestions, wrongAnswer])
+
+    const setATopic = (t) => {
+        setState(prev => ({
+            ...prev,
+            topic: t,
+            askingQuestions: true,
+            questionNumber: 0
+        }))
+    }
 
     const options = [
         {
-            text: data,
-            handler: props.actionProvider.handleJavaScriptQuiz,
+            text: 'Addition',
+            handler: () => setATopic(state.allQuestions.Addition),
             id: 1,
         },
-        { text: "Topic 2", handler: () => {}, id: 2},
-        { text: "Topic 3", handler: () => {}, id: 3},
+        { 
+            text: "Subtraction", 
+            handler: () => setATopic(state.allQuestions.Subtraction), 
+            id: 2 
+        },
+        { 
+            text: "Multiplication", 
+            handler: () => setATopic(state.allQuestions.Multiplication), 
+            id: 3 
+        },
     ];
 
     const buttonsMarkup = options.map((option) => (
