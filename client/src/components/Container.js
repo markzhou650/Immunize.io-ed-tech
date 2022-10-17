@@ -11,6 +11,7 @@ import MessageParser from "./chatbot/MessageParser";
 import ActionProvider from "./chatbot/ActionProvider";
 import { useContext } from "react";
 import { AppContext } from "../context";
+import ResponsivePlayer from "./video/ResponsivePlayer";
 
 export default function Container () {
   const globalState = useContext(AppContext)
@@ -33,6 +34,17 @@ export default function Container () {
             : "Here's some more content" 
           }
         </div>
+
+
+        {/* Video */  }
+        <div className="video">
+          <ResponsivePlayer /> 
+          { globalState.state.videoHelpWidget 
+              ? (globalState.state.videoWidgetMessage) 
+              : "" 
+            }
+        </div>
+
     </div>
   );
 }

@@ -22,7 +22,7 @@ const config = {
                 // console.log('widgetFunc what is props', props)
                 return <Options {...props} />
             }
-        }
+        },
     ]
 }
 

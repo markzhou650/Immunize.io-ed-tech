@@ -37,6 +37,7 @@ class ActionProvider {
       wrongAnswer: true
     }))
   }
+
    
   addMessageToState = (message) => {
     this.setState(prevState => ({
@@ -44,6 +45,8 @@ class ActionProvider {
       messages: [...prevState.messages, message],
     }))
   }
+
 }
 
+  
 export default ActionProvider;

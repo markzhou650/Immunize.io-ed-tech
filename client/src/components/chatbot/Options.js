@@ -27,6 +27,20 @@ const Options = ({ setState, state, actionProvider }) => {
         }
     }, [askingQuestions, wrongAnswer])
 
+
+    useEffect(() => {
+        if (askingQuestions && wrongAnswer) {
+            globalState.setDisplayHelpWidget(true, topic[questionNumber].ReadLink)
+        }
+    }, [askingQuestions, wrongAnswer])
+
+    /* Video */
+    useEffect(() => {
+        if (askingQuestions && wrongAnswer) {
+            globalState.setVideoHelpWidget(true, topic[questionNumber].YTLink)
+        }
+    }, [askingQuestions, wrongAnswer])
+
     const setATopic = (t) => {
         setState(prev => ({
             ...prev,
@@ -53,6 +67,7 @@ const Options = ({ setState, state, actionProvider }) => {
             id: 3 
         },
     ];
+
 
     const buttonsMarkup = options.map((option) => (
         <button key={option.id} onClick={option.handler} className="option-button">

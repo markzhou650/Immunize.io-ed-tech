@@ -2,7 +2,8 @@ import { createContext, useMemo, useReducer } from 'react'
 import { actions } from './actions'
 
 const initialState = {
-    displayHelpWidget: false
+    displayHelpWidget: false,
+    videoHelpWidget: false
 }
 
 const AppContext = createContext(initialState)
@@ -14,9 +15,17 @@ function reducer(state, action) {
             displayHelpWidget: action.payload,
             helpWidgetMessage: action.message
         }
+        
+        case 'displayVideo': return {
+            ...state,
+            videoHelpWidget: action.payload,
+            videoWidgetMessage: action.message
+        }
+
         default:
     }
 }
+
 
 export default function AppProvider ({ children }) {
     const [appState, dispatch] = useReducer(reducer, initialState)
