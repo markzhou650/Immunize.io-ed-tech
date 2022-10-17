@@ -7,7 +7,8 @@
             "Incorrect1": "3",
             "Incorrect2": "4",
             "Incorrect3": "5",
-            "YTLink": "https://www.youtube.com/watch?v=DaPJkYo2quc"
+            "YTLink": "https://www.youtube.com/watch?v=DaPJkYo2quc",
+            "ReadLink": "https://www.wikihow.com/Add"
         },
         {
             "ID": "2",
@@ -16,7 +17,8 @@
             "Incorrect1": "4",
             "Incorrect2": "5",
             "Incorrect3": "6",
-            "YTLink": "https://www.youtube.com/watch?v=NVIjHj-lrT4"
+            "YTLink": "https://www.youtube.com/watch?v=NVIjHj-lrT4",
+            "ReadLink": "https://www.wikihow.com/Add"
         },
         {
             "ID": "3",
@@ -25,7 +27,8 @@
             "Incorrect1": "5",
             "Incorrect2": "6",
             "Incorrect3": "7",
-            "YTLink": "https://www.youtube.com/watch?v=QbRoyhGdjnA"
+            "YTLink": "https://www.youtube.com/watch?v=QbRoyhGdjnA",
+            "ReadLink": "https://www.wikihow.com/Add"
         }
     ],
     "Subtraction": [
@@ -36,7 +39,8 @@
             "Incorrect1": "3",
             "Incorrect2": "4",
             "Incorrect3": "5",
-            "YTLink": "https://www.youtube.com/watch?v=Y6M89-6106I"
+            "YTLink": "https://www.youtube.com/watch?v=Y6M89-6106I",
+            "ReadLink": "https://www.wikihow.com/Subtract"
         },
         {
             "ID": "2",
@@ -45,7 +49,8 @@
             "Incorrect1": "4",
             "Incorrect2": "5",
             "Incorrect3": "6",
-            "YTLink": "https://www.youtube.com/watch?v=FzLlzzIQlDM"
+            "YTLink": "https://www.youtube.com/watch?v=FzLlzzIQlDM",
+            "ReadLink": "https://www.wikihow.com/Subtract"
         },
         {
             "ID": "3",
@@ -54,7 +59,8 @@
             "Incorrect1": "5",
             "Incorrect2": "6",
             "Incorrect3": "7",
-            "YTLink": "https://www.youtube.com/watch?v=3KZX41dU5ds"
+            "YTLink": "https://www.youtube.com/watch?v=3KZX41dU5ds",
+            "ReadLink": "https://www.wikihow.com/Subtract"
         }
     ],
     "Multiplication": [
@@ -65,7 +71,8 @@
             "Incorrect1": "3",
             "Incorrect2": "4",
             "Incorrect3": "5",
-            "YTLink": "https://www.youtube.com/watch?v=ua8t-UJaUuM"
+            "YTLink": "https://www.youtube.com/watch?v=ua8t-UJaUuM",
+            "ReadLink": "https://www.wikihow.com/Multiply"
         },
         {
             "ID": "2",
@@ -74,7 +81,8 @@
             "Incorrect1": "4",
             "Incorrect2": "5",
             "Incorrect3": "6",
-            "YTLink": "https://www.youtube.com/watch?v=FJ5qLWP3Fqo"
+            "YTLink": "https://www.youtube.com/watch?v=FJ5qLWP3Fqo",
+            "ReadLink": "https://www.wikihow.com/Multiply"
         },
         {
             "ID": "3",
@@ -83,7 +91,8 @@
             "Incorrect1": "4",
             "Incorrect2": "6",
             "Incorrect3": "7",
-            "YTLink": "https://www.youtube.com/watch?v=RVYwunbpMHA"
+            "YTLink": "https://www.youtube.com/watch?v=RVYwunbpMHA",
+            "ReadLink": "https://www.wikihow.com/Multiply"
         }
     ]
 }

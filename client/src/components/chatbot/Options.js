@@ -23,7 +23,7 @@ const Options = ({ setState, state, actionProvider }) => {
 
     useEffect(() => {
         if (askingQuestions && wrongAnswer) {
-            globalState.setDisplayHelpWidget(true, topic[questionNumber].YTLink)
+            globalState.setDisplayHelpWidget(true, topic[questionNumber].ReadLink)
         }
     }, [askingQuestions, wrongAnswer])
 

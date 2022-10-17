@@ -29,14 +29,7 @@ export default function Container () {
         
         <div>
           { globalState.state.displayHelpWidget 
-            ? (
-              <iframe 
-                title="get help"
-                src={globalState.state.helpWidgetMessage}
-                width="300"
-                height="300"
-              ></iframe>
-            ) 
+            ? (globalState.state.helpWidgetMessage) 
             : "Here's some more content" 
           }
         </div>
