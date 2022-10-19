@@ -17,7 +17,12 @@ const Options = ({ setState, state, actionProvider }) => {
 
     useEffect(() => {
         if (topic && Array.isArray(topic)) {
-            actionProvider.askQuestion(topic[questionNumber].Question)
+            try {
+                actionProvider.askQuestion(topic[questionNumber].Question)
+            }
+            catch {
+                console.log('ERROR')
+            }
         }
     }, [topic, questionNumber])
 
