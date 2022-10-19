@@ -19,15 +19,25 @@ class MessageParser {
           // get mad
           this.actionProvider.wrongAnswer()
 
-        }
-        // return this.actionProvider
+      if (lowercase.includes(this.state.topic[this.state.questionNumber].Answer)) {
+        this.actionProvider.incrementQuestion()
+        // test
+        // console.log("Correct")
+      } else {
+        // get mad
+        this.actionProvider.wrongAnswer()
+        // test
+        // console.log("Incorrect")
       }
-      if (lowercase.includes("hello")){
-        return this.actionProvider.greet();
-      }
-
-      
+      // if (this.state.askingQuestions === 0) {
+      //   console.log('confirm')
+      // }
+      // return this.actionProvider
+    }
+    if (lowercase.includes("hello")){
+      return this.actionProvider.greet();
     }
   }
-  
-  export default MessageParser;
+}
+
+export default MessageParser;
