@@ -36,8 +36,18 @@ class ActionProvider {
       ...prev,
       wrongAnswer: true
     }))
+    // Added a small message when an incorrect answer is given and how to proceed
+    const message = this.createChatBotMessage('Incorrect. Type "continue" to proceed')
+    this.addMessageToState(message)
   }
 
+  // Action handler to respond with a message that indicates that the answer was correct
+  // And then increments the question number
+  correctAnswer = () => {
+    const message = this.createChatBotMessage("Correct! Next question...")
+    this.addMessageToState(message)
+    this.incrementQuestion()
+  }
    
   addMessageToState = (message) => {
     this.setState(prevState => ({
