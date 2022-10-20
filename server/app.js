@@ -22,6 +22,19 @@ app.post("/questions", (req, res) => {
   res.json(questions);
 });
 
+app.put("/questions", (req, res) => {
+  let key = Object.keys(req.body)[0];
+  let value = Object.values(req.body)[0];
+  // if (key in questions) {
+  //   questions[key] = value;
+  //   fs.writeFileSync("./JSONtests/mcqtest.json", JSON.stringify(questions));
+  //   res.json(questions);
+  // }
+  questions[key] = value;
+  fs.writeFileSync("./JSONtests/mcqtest.json", JSON.stringify(questions));
+  res.json(questions);
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
