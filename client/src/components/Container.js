@@ -28,7 +28,7 @@ export default function Container () {
           />
         </div>
         
-        <div>
+        <div className = "Reading">
           { globalState.state.displayHelpWidget 
             ? (globalState.state.helpWidgetMessage) 
             : "Here's some more content" 
