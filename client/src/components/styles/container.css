@@ -2,8 +2,20 @@
     margin: 15px;
     display: flex;
     justify-content: space-around;
+
+}
+
+@media screen and (max-width: 840px) {
+  .container {
+    margin: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+
 }
 
 /* .container > div {
 
 } */
+
+  
