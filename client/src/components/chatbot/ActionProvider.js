@@ -48,6 +48,15 @@ class ActionProvider {
     this.addMessageToState(message)
     this.incrementQuestion()
   }
+
+  // Indicates that the quiz has ended when all questions have been asked. Prompts user to choose another topic if 
+  // they would like and shows topic buttons
+  endOfQuiz = () => {
+    const message = this.createChatBotMessage("This is the end of the quiz. You may choose another topic.", {
+      widget: "options"
+    })
+    this.addMessageToState(message)
+  }
    
   addMessageToState = (message) => {
     this.setState(prevState => ({
