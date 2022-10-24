@@ -28,11 +28,16 @@ export default function Container () {
           />
         </div>
         
-        <div className = "Reading">
-          { globalState.state.displayHelpWidget 
-            ? (globalState.state.helpWidgetMessage) 
-            : "Here's some more content" 
-          }
+      <div className="reading">
+        { globalState.state.displayHelpWidget && (
+          <a
+            href={globalState.state.helpWidgetMessage}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Click here for more help
+          </a>
+        )}
         </div>
 
 

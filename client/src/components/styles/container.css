@@ -2,7 +2,6 @@
     margin: 15px;
     display: flex;
     justify-content: space-around;
-
 }
 
 @media screen and (max-width: 840px) {
@@ -14,8 +13,20 @@
 
 }
 
-/* .container > div {
-
-} */
-
-  
+.container .reading a {
+  font-family: Helvetica, sans-serif;
+  font-weight: 600;
+  color: #067bb1;
+  text-decoration: none;
+  margin: 5px;
+  display: block;
+}
+.container .reading a:visited {
+  color: #117bb1;
+}
+.container .reading a:hover {
+  color: #2781ab;
+}
+.container .reading a:active {
+  color: #b71a1a;
+}
