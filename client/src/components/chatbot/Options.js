@@ -20,8 +20,8 @@ const Options = ({ setState, state, actionProvider }) => {
             try {
                 actionProvider.askQuestion(topic[questionNumber].Question)
             }
-            catch {
-                console.log('ERROR')
+            catch (error) {
+                console.error('error while asking a question', error.message)
             }
         }
     }, [topic, questionNumber])
@@ -30,12 +30,8 @@ const Options = ({ setState, state, actionProvider }) => {
         if (askingQuestions && wrongAnswer) {
             globalState.setDisplayHelpWidget(true, topic[questionNumber].ReadLink)
         }
-    }, [askingQuestions, wrongAnswer])
-
-
-    useEffect(() => {
-        if (askingQuestions && wrongAnswer) {
-            globalState.setDisplayHelpWidget(true, topic[questionNumber].ReadLink)
+        if (!wrongAnswer) {
+            globalState.setDisplayHelpWidget(false)
         }
     }, [askingQuestions, wrongAnswer])
 

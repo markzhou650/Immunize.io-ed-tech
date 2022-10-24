@@ -17,7 +17,8 @@ class ActionProvider {
   incrementQuestion = () => {
     this.setState(prev => ({
       ...prev,
-      questionNumber: prev.questionNumber + 1
+      questionNumber: prev.questionNumber + 1,
+      wrongAnswer: false
     }))
   }
 
@@ -37,7 +38,7 @@ class ActionProvider {
       wrongAnswer: true
     }))
     // Added a small message when an incorrect answer is given and how to proceed
-    const message = this.createChatBotMessage('Incorrect. Type "continue" to proceed')
+    const message = this.createChatBotMessage('Incorrect. Type "continue" to proceed', 'wrongAnswer')
     this.addMessageToState(message)
   }
 
