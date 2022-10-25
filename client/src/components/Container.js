@@ -15,7 +15,7 @@ import ResponsivePlayer from "./video/ResponsivePlayer";
 
 export default function Container () {
   const globalState = useContext(AppContext)
-  console.log("what is global state", globalState)
+  // console.log("what is global state", globalState)
 
   return (
     <div className="container">

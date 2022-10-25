@@ -13,11 +13,12 @@ class ActionProvider {
     this.stateRef = stateRef;
     this.createCustomMessage = createCustomMessage;
   }
-
+  
   incrementQuestion = () => {
     this.setState(prev => ({
       ...prev,
       questionNumber: prev.questionNumber + 1,
+      askingQuestions: true, // when this action is called, askingQuestions is changed to true
       wrongAnswer: false
     }))
   }
@@ -28,13 +29,20 @@ class ActionProvider {
   }
 
   askQuestion = (q) => {
-    const message = this.createChatBotMessage(`what is ${q}`)
+    // when this action is called, askingQuestions is changed to true
+    this.setState(prev => ({
+      ...prev,
+      askingQuestions: true
+    }))
+    const message = this.createChatBotMessage(`What is ${q}?`)
     this.addMessageToState(message)
   }
 
   wrongAnswer = () => {
+    // when this action is called, askingQuestions is changed to false
     this.setState(prev => ({
       ...prev,
+      askingQuestions: false,
       wrongAnswer: true
     }))
     // Added a small message when an incorrect answer is given and how to proceed
@@ -45,6 +53,11 @@ class ActionProvider {
   // Action handler to respond with a message that indicates that the answer was correct
   // And then increments the question number
   correctAnswer = () => {
+    this.setState(prev => ({
+      ...prev,
+      askingQuestions: true,
+      wrongAnswer: true
+    }))
     const message = this.createChatBotMessage("Correct! Next question...")
     this.addMessageToState(message)
     this.incrementQuestion()
@@ -52,7 +65,13 @@ class ActionProvider {
 
   // Indicates that the quiz has ended when all questions have been asked. Prompts user to choose another topic if 
   // they would like and shows topic buttons
+  // It then sets the state of messages to an empty array so questions are not asked multiple times
   endOfQuiz = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [],
+      askingQuestions: false
+    }));
     const message = this.createChatBotMessage("This is the end of the quiz. You may choose another topic.", {
       widget: "options"
     })
