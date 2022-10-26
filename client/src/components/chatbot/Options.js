@@ -46,7 +46,7 @@ const Options = ({ setState, state, actionProvider }) => {
         setState(prev => ({
             ...prev,
             topic: t,
-            askingQuestions: true,
+            askingQuestions: false, // Added a state check for the logic in messageParser
             questionNumber: 0
         }))
     }
