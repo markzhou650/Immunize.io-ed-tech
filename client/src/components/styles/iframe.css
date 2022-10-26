@@ -1,0 +1,10 @@
+iframe {
+    width: 350px;
+    height: 500px;
+}
+.iframe-wrapper {
+    width: 350px;
+    height: 500px;
+    position: relative;
+    display: block;
+}
