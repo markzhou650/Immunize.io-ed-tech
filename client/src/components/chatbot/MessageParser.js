@@ -8,6 +8,11 @@ class MessageParser {
       const lowercase = message.toLowerCase();
       const topic = this.state.topic
 
+      // this is to ensure that the bot will bug the user to pick a topic
+      if (topic === null) {
+        this.actionProvider.askTopic()
+      }
+
       // If the state of askingQuestions is true, the following logic will take place:
       if (this.state.askingQuestions) {
         // If the questionNumber === the length of questions AND the user inputs the right answer

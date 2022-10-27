@@ -77,6 +77,21 @@ class ActionProvider {
     })
     this.addMessageToState(message)
   }
+  
+  // This allows the bot to manually ask the user to pick a topic and prompts the user 
+  // with different topics to choose from
+  // Sets the state of the messages to an empty array so the interface can stay clean before starting the quiz
+  askTopic = () => {
+    this.setState((prevState) => ({
+      ...prevState,
+      messages: [],
+      askingQuestions: false
+    }));
+    const message = this.createChatBotMessage("Please pick a topic.", {
+      widget: "options"
+    })
+    this.addMessageToState(message)
+  }
    
   addMessageToState = (message) => {
     this.setState(prevState => ({
