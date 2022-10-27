@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import { AppContext } from "../../context";
-
+import '../styles/disable.css'
 
 const Options = ({ setState, state, actionProvider }) => {
     const { topic, questionNumber, wrongAnswer, askingQuestions } = state
@@ -47,25 +47,35 @@ const Options = ({ setState, state, actionProvider }) => {
             ...prev,
             topic: t,
             askingQuestions: false, // Added a state check for the logic in messageParser
-            questionNumber: 0
-        }))
+            questionNumber: 0,
+
+        })
+
+        )
+        remove_click()
     }
 
+    function remove_click() {
+        const btn = document.getElementsByClassName("option-button");
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].classList.add("disable")
+        }
+    }
     const options = [
         {
             text: 'Addition',
             handler: () => setATopic(state.allQuestions.Addition),
             id: 1,
         },
-        { 
-            text: "Subtraction", 
-            handler: () => setATopic(state.allQuestions.Subtraction), 
-            id: 2 
+        {
+            text: "Subtraction",
+            handler: () => setATopic(state.allQuestions.Subtraction),
+            id: 2
         },
-        { 
-            text: "Multiplication", 
-            handler: () => setATopic(state.allQuestions.Multiplication), 
-            id: 3 
+        {
+            text: "Multiplication",
+            handler: () => setATopic(state.allQuestions.Multiplication),
+            id: 3
         },
     ];
 
