@@ -29,7 +29,6 @@ async function getAllSubjects() {
       if (error) throw error;
       let subjects = [];
       subjects = subjects.concat(results);
-      console.log(subjects);
       resolve(subjects);
     });
   });
@@ -62,14 +61,8 @@ async function getQuestion(subject_id) {
 }
 
 app.get("/questions", async (req, res) => {
-  // res.json({ message: "If you see this message, Node is connected" });
-  // res.json({ message: questions[1].Question })
-
   let subjects = await getAllSubjects();
-  console.log(subjects);
-
   let questions = await getAllQuestions(subjects);
-  console.log(questions);
 
   res.json({ questions: questions });
 });
