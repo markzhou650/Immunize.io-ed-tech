@@ -1,9 +1,11 @@
 iframe {
-    width: 350px;
+    width: 750px;
     height: 500px;
+    border: solid;
+    border-radius: 5px;
 }
 .iframe-wrapper {
-    width: 350px;
+    width: 750px;
     height: 500px;
     position: relative;
     display: block;
