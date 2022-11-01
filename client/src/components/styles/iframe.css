@@ -1,7 +1,8 @@
 iframe {
     width: 750px;
     height: 500px;
-    border: solid;
+    border:solid;
+    border-width: 1px;
     border-radius: 5px;
 }
 .iframe-wrapper {

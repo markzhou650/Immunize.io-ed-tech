@@ -1,7 +1,7 @@
 .container {
     margin: 15px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 
 @media screen and (max-width: 840px) {
