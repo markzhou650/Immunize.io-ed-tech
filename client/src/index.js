@@ -4,7 +4,8 @@ import "./index.css";
 // import ChatBox from "./components/ChatBox";
 import Container from "./components/Container";
 import Navbar from "./components/Navbar";
-import AppProvider  from "./context";
+import AppProvider from "./context";
+import Admin from "./components/Admin";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,5 +15,6 @@ root.render(
       <Navbar />
       <Container />
     </AppProvider>
+    <Admin />
   </React.StrictMode>
 );
