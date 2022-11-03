@@ -5,6 +5,7 @@ const port = process.env.PORT || 3001;
 const mysql = require("mysql");
 const { getAllSubjects } = require("./modules/getAllSubjects");
 const { getAllQuestions } = require("./modules/getAllQuestions");
+const { getSubjectId } = require("./modules/getSubjectId");
 
 app.use(express.json());
 
@@ -30,6 +31,28 @@ app.get("/questions", async (req, res) => {
   let questions = await getAllQuestions(connection, subjects);
 
   res.json({ questions: questions });
+});
+
+app.post("/questions", async (req, res) => {
+  let subjects = await getAllSubjects(connection);
+  // let questions = await getAllQuestions(connection, subjects);
+  let subjectNames = [];
+  for (let subject of subjects) {
+    subjectNames.push(subject.name);
+  }
+
+  if (subjectNames.indexOf(req.body.subject) >= 0) {
+    let subjectId = await getSubjectId(connection, req.body.subject);
+
+    connection.query(
+      "INSERT INTO questions (Question, Answer, frn_subject_id) VALUES (?, ?, ?);",
+      [req.body.question, req.body.answer, subjectId[0].subject_id],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(results);
+      }
+    );
+  }
 });
 
 app.listen(port, () => {
