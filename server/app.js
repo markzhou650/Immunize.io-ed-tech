@@ -44,6 +44,7 @@ app.post("/questions", async (req, res) => {
   if (subjectNames.indexOf(req.body.subject) >= 0) {
     let subjectId = await getSubjectId(connection, req.body.subject);
 
+    // WANRING: INPUT IS NOT SANITIZED
     connection.query(
       "INSERT INTO questions (Question, Answer, frn_subject_id) VALUES (?, ?, ?);",
       [req.body.question, req.body.answer, subjectId[0].subject_id],
