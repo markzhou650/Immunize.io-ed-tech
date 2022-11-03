@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import { withFormik, Form, Field } from "formik";
+// const axios = require("axios");
+import axios from "axios";
+
+// Source: https://blog.devgenius.io/reactjs-form-editable-473e48fb6c9e
+// https://github.com/ekaleonardo619/form-toggle-edit-formik
 
 const form_id = "form_id";
 class adminForm extends Component {
@@ -19,13 +24,20 @@ class adminForm extends Component {
     });
   };
 
+  submitOnClick = (event) => {
+    // event.preventDefault();
+  };
+
   _renderAction() {
     return (
       <React.Fragment>
         <div>
           {this?.props?.status?.edit ? (
             <React.Fragment>
-              <button type="submit" form={form_id}>
+              <button
+                type="submit"
+                form={form_id} /*onClick={this.cancelOnClick}*/
+              >
                 Save
               </button>
               <button
@@ -139,6 +151,20 @@ const FormikForm = withFormik({
     actions.setStatus({
       edit: false,
     });
+    console.log("HERE!");
+    const postData = async () => {
+      try {
+        const res = await axios.post(
+          "http://localhost:42069/questions",
+          values
+        );
+        console.log(`Status: ${res.status}`);
+        console.log(`Body: ${res.data}`);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    postData();
   },
 })(adminForm);
 
