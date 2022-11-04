@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FormikForm from "./form/adminForm";
+import FormikForm from "../form/adminForm";
 
 function Admin() {
   const [fields, updateFields] = useState({
