@@ -3,6 +3,9 @@ const app = express();
 require("dotenv").config();
 const port = process.env.PORT || 3001;
 const mysql = require("mysql");
+const { getAllSubjects } = require("./modules/getAllSubjects");
+const { getAllQuestions } = require("./modules/getAllQuestions");
+const { getSubjectId } = require("./modules/getSubjectId");
 
 app.use(express.json());
 
@@ -23,70 +26,35 @@ connection.connect(function (err) {
   console.log("connected as id " + connection.threadId);
 });
 
-async function getAllSubjects() {
-  let subjectPromise = new Promise((resolve, reject) => {
-    connection.query("SELECT * FROM subject", (error, results, fields) => {
-      if (error) throw error;
-      let subjects = [];
-      subjects = subjects.concat(results);
-      resolve(subjects);
-    });
-  });
-
-  return subjectPromise;
-}
-
-async function getAllQuestions(subjects) {
-  let questionPromise = new Promise(async (resolve, reject) => {
-    let questions = {};
-    for (let subject of subjects) {
-      questions[subject.name] = await getQuestion(subject.subject_id);
-    }
-    resolve(questions);
-  });
-  return questionPromise;
-}
-
-async function getQuestion(subject_id) {
-  let questionPromise = new Promise((resolve, reject) => {
-    connection.query(
-      `SELECT * FROM questions WHERE frn_subject_id = ${subject_id}`,
-      (error, results, fields) => {
-        if (error) throw error;
-        resolve(results);
-      }
-    );
-  });
-  return questionPromise;
-}
-
 app.get("/questions", async (req, res) => {
-  let subjects = await getAllSubjects();
-  let questions = await getAllQuestions(subjects);
+  let subjects = await getAllSubjects(connection);
+  let questions = await getAllQuestions(connection, subjects);
 
   res.json({ questions: questions });
 });
 
-// app.post("/questions", (req, res) => {
-//   let key = Object.keys(req.body)[0];
-//   let value = Object.values(req.body)[0];
-//   questions[key] = value;
-//   fs.writeFileSync("./JSONtests/mcqtest.json", JSON.stringify(questions));
-//   res.json(questions);
-// });
+app.post("/questions", async (req, res) => {
+  let subjects = await getAllSubjects(connection);
+  // let questions = await getAllQuestions(connection, subjects);
+  let subjectNames = [];
+  for (let subject of subjects) {
+    subjectNames.push(subject.name);
+  }
 
-// app.put("/questions", (req, res) => {
-//   let key = Object.keys(req.body)[0];
-//   let value = Object.values(req.body)[0];
-//   // if (key in questions) {
-//   //   questions[key] = value;
-//   //   fs.writeFileSync("./JSONtests/mcqtest.json", JSON.stringify(questions));
-//   //   res.json(questions);
-//   // }
-//   questions[key] = value;
-//   fs.writeFileSync("./JSONtests/mcqtest.json", JSON.stringify(questions));
-//   res.json(questions);
-// });
+  if (subjectNames.indexOf(req.body.subject) >= 0) {
+    let subjectId = await getSubjectId(connection, req.body.subject);
+
+    // WANRING: INPUT IS NOT SANITIZED
+    connection.query(
+      "INSERT INTO questions (Question, Answer, frn_subject_id) VALUES (?, ?, ?);",
+      [req.body.question, req.body.answer, subjectId[0].subject_id],
+      (error, results, fields) => {
+        if (error) throw error;
+        res.send(results);
+      }
+    );
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
