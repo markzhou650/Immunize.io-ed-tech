@@ -3,7 +3,8 @@ import { actions } from './actions'
 
 const initialState = {
     displayHelpWidget: false,
-    videoHelpWidget: false
+    videoHelpWidget: false,
+    iframeSrc: undefined
 }
 
 const AppContext = createContext(initialState)
@@ -20,6 +21,11 @@ function reducer(state, action) {
             ...state,
             videoHelpWidget: action.payload,
             videoWidgetMessage: action.message
+        }
+
+        case 'setIframeSrc': return {
+            ...state,
+            iframeSrc: action.payload
         }
 
         default:
