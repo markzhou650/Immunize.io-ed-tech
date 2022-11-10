@@ -68,12 +68,12 @@ const Options = ({ setState, state, actionProvider }) => {
         },
         {
             text: "Flu Vaccine",
-            handler: () => setATopic(state.allQuestions["Flu Vaccine)"]),
+            handler: () => setATopic(state.allQuestions["Flu Vaccine"]),
             id: 2
         },
         {
             text: "Pneumonia Vaccine",
-            handler: () => setATopic(state.allQuestions["PneumoniaVaccine)"]),
+            handler: () => setATopic(state.allQuestions["Pneumonia Vaccine"]),
             id: 3
         },
     ];
