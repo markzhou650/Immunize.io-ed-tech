@@ -35,12 +35,14 @@ class adminForm extends Component {
           {this?.props?.status?.edit ? (
             <React.Fragment>
               <button
+                class="btn btn-outline-primary"
                 type="submit"
                 form={form_id} /*onClick={this.cancelOnClick}*/
               >
                 Save
               </button>
               <button
+                class="btn btn-outline-primary"
                 onClick={this.cancelOnClick}
                 style={{ marginLeft: "8px" }}
               >
@@ -48,7 +50,7 @@ class adminForm extends Component {
               </button>
             </React.Fragment>
           ) : (
-            <button onClick={this.editOnClick}>Edit</button>
+            <button class="btn btn-outline-primary" onClick={this.editOnClick}>Edit</button>
           )}
         </div>
       </React.Fragment>
@@ -59,7 +61,7 @@ class adminForm extends Component {
     return (
       <React.Fragment>
         <div>
-          <label>Subject</label>
+          <label>Subject:</label>
           <div>
             <label type="text" name="subject">
               {this?.props?.fields?.subject}
@@ -67,7 +69,7 @@ class adminForm extends Component {
           </div>
         </div>
         <div>
-          <label>Question</label>
+          <label>Question:</label>
           <div>
             <label type="text" name="question">
               {this?.props?.fields?.question}
@@ -75,7 +77,7 @@ class adminForm extends Component {
           </div>
         </div>
         <div>
-          <label>Answer</label>
+          <label>Answer:</label>
           <div>
             <label type="text" name="answer">
               {this?.props?.fields?.answer}
@@ -114,14 +116,14 @@ class adminForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <h2>Formik Form</h2>
+        <h2>Add New Content:</h2>
         {this._renderAction()}
         <Form id={form_id}>
           {this?.props?.status?.edit
             ? this._renderFormInput()
             : this._renderFormView()}
         </Form>
-        <h4>Current value</h4>
+        <h4>Current value:</h4>
         <div>
           <pre>
             <code>{JSON.stringify(this.props.fields, null, 2)}</code>

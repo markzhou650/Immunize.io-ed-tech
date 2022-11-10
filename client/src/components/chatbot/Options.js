@@ -49,9 +49,8 @@ const Options = ({ setState, state, actionProvider }) => {
             askingQuestions: false, // Added a state check for the logic in messageParser
             questionNumber: 0,
 
-        })
-
-        )
+        }))
+        // globalState.setIframeSrc(t[0].YLink)
         remove_click()
     }
 
@@ -63,18 +62,18 @@ const Options = ({ setState, state, actionProvider }) => {
     }
     const options = [
         {
-            text: 'Addition',
-            handler: () => setATopic(state.allQuestions.Addition),
+            text: 'Shingles Vaccine',
+            handler: () => setATopic(state.allQuestions["Shingles Vaccine"]),
             id: 1,
         },
         {
-            text: "Subtraction",
-            handler: () => setATopic(state.allQuestions.Subtraction),
+            text: "Flu Vaccine",
+            handler: () => setATopic(state.allQuestions["Flu Vaccine"]),
             id: 2
         },
         {
-            text: "Multiplication",
-            handler: () => setATopic(state.allQuestions.Multiplication),
+            text: "Pneumonia Vaccine",
+            handler: () => setATopic(state.allQuestions["Pneumonia Vaccine"]),
             id: 3
         },
     ];

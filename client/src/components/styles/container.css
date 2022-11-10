@@ -1,7 +1,8 @@
 .container {
-    margin: 15px;
+    padding-top: 15px;
     display: flex;
     justify-content: space-evenly;
+    width:auto
 }
 
 @media screen and (max-width: 840px) {
