@@ -1,10 +1,10 @@
 import '../styles/iframe.css'
 
 
-const IframeContainer = () => {
+const IframeContainer = ({src='http://learning.immunize.io/'}) => {
     return (
         <div className="iframe-wrapper">
-            <iframe src='http://learning.immunize.io/'></iframe>
+            <iframe src={src}></iframe>
         </div>
     )
 }

@@ -11,6 +11,11 @@ export const actions = (state, dispatch) => ({
         type: 'displayVideo', 
         payload,
         message
+    }),
+
+    setIframeSrc: (payload) => dispatch({
+        type: 'setIframeSrc',
+        payload
     })
 })
 
