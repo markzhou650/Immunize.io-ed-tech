@@ -1,4 +1,10 @@
 .admin {
   display: flex;
   flex-direction: column;
+  text-align: center;
+  padding-top: 3em;
+}
+.btn:focus {
+  outline: none;
+  box-shadow: none;
 }
