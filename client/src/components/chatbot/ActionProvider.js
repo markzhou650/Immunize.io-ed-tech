@@ -34,7 +34,7 @@ class ActionProvider {
       ...prev,
       askingQuestions: true
     }))
-    const message = this.createChatBotMessage(`What is ${q}?`)
+    const message = this.createChatBotMessage(`${q}?`)
     this.addMessageToState(message)
   }
 
