@@ -35,6 +35,11 @@ app.get("/questions", async (req, res) => {
   res.json({ questions: questions });
 });
 
+app.post("/read", async(req,res) => {
+  connection.query("Select * from questions;", (error, results) => {
+    res.send(results);
+  })
+})
 app.post("/questions", async (req, res) => {
   let subjects = await getAllSubjects(connection);
   // let questions = await getAllQuestions(connection, subjects);
