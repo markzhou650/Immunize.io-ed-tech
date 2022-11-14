@@ -1,4 +1,4 @@
-.admin {
+/* .admin {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -7,4 +7,7 @@
 .btn:focus {
   outline: none;
   box-shadow: none;
+} */
+label {
+  margin-bottom: 0rem !important;
 }

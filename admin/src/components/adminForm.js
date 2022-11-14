@@ -30,18 +30,18 @@ class adminForm extends Component {
   _renderAction() {
     return (
       <React.Fragment>
-        <div>
+        <div className="form-statusbar">
           {this?.props?.status?.edit ? (
             <React.Fragment>
               <button
-                class="btn btn-outline-primary"
+                className="btn btn-primary btn-sm"
                 type="submit"
                 form={form_id} /*onClick={this.cancelOnClick}*/
               >
                 Save
               </button>
               <button
-                class="btn btn-outline-primary"
+                className="btn btn-danger btn-sm"
                 onClick={this.cancelOnClick}
                 style={{ marginLeft: "8px" }}
               >
@@ -49,7 +49,12 @@ class adminForm extends Component {
               </button>
             </React.Fragment>
           ) : (
-            <button class="btn btn-outline-primary" onClick={this.editOnClick}>Edit</button>
+            <button
+              className="btn btn-primary btn-sm"
+              onClick={this.editOnClick}
+            >
+              Edit
+            </button>
           )}
         </div>
       </React.Fragment>
@@ -59,26 +64,26 @@ class adminForm extends Component {
   _renderFormView = () => {
     return (
       <React.Fragment>
-        <div>
-          <label>Subject:</label>
-          <div>
-            <label type="text" name="subject">
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Subject:</label>
+          <div className="col-sm-10">
+            <label type="text" name="subject" className="form-control">
               {this?.props?.fields?.subject}
             </label>
           </div>
         </div>
-        <div>
-          <label>Question:</label>
-          <div>
-            <label type="text" name="question">
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Question:</label>
+          <div className="col-sm-10">
+            <label type="text" name="question" className="form-control">
               {this?.props?.fields?.question}
             </label>
           </div>
         </div>
-        <div>
-          <label>Answer:</label>
-          <div>
-            <label type="text" name="answer">
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Answer:</label>
+          <div className="col-sm-10">
+            <label type="text" name="answer" className="form-control">
               {this?.props?.fields?.answer}
             </label>
           </div>
@@ -90,22 +95,37 @@ class adminForm extends Component {
   _renderFormInput = () => {
     return (
       <React.Fragment>
-        <div>
-          <label>Subject</label>
-          <div>
-            <Field type="text" name="subject" placeholder="Subject" />
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Subject</label>
+          <div className="col-sm-10">
+            <Field
+              type="text"
+              name="subject"
+              className="form-control"
+              placeholder="Subject"
+            />
           </div>
         </div>
-        <div>
-          <label>Question</label>
-          <div>
-            <Field type="text" name="question" placeholder="Question" />
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Question</label>
+          <div className="col-sm-10">
+            <Field
+              type="text"
+              name="question"
+              className="form-control"
+              placeholder="Question"
+            />
           </div>
         </div>
-        <div>
-          <label>Answer</label>
-          <div>
-            <Field type="text" name="answer" placeholder="Answer" />
+        <div className="form-group row">
+          <label className="col-sm-2 col-form-label">Answer</label>
+          <div className="col-sm-10">
+            <Field
+              type="text"
+              name="answer"
+              className="form-control"
+              placeholder="Answer"
+            />
           </div>
         </div>
       </React.Fragment>
