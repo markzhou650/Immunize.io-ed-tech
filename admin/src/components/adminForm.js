@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withFormik, Form, Field } from "formik";
-// const axios = require("axios");
 import axios from "axios";
 
 // Source: https://blog.devgenius.io/reactjs-form-editable-473e48fb6c9e

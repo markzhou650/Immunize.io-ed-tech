@@ -1,7 +1,7 @@
 .admin {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  text-align: left;
   padding-top: 3em;
 }
 .btn:focus {
