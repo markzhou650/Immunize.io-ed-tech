@@ -6,6 +6,8 @@ const mysql = require("mysql");
 const { getAllSubjects } = require("./modules/getAllSubjects");
 const { getAllQuestions } = require("./modules/getAllQuestions");
 const { getSubjectId } = require("./modules/getSubjectId");
+const { getSubQuestions } = require("./modules/getSubQuestions");
+
 const cors = require("cors");
 
 app.use(express.json());
@@ -29,10 +31,11 @@ connection.connect(function (err) {
 });
 
 app.get("/questions", async (req, res) => {
-  let subjects = await getAllSubjects(connection);
-  let questions = await getAllQuestions(connection, subjects);
+  const subjects = await getAllSubjects(connection);
+  const questions = await getAllQuestions(connection, subjects);
+  const sub_questions = await getSubQuestions(connection)
 
-  res.json({ questions: questions });
+  res.json({ questions, subjects, sub_questions });
 });
 
 app.post("/questions", async (req, res) => {

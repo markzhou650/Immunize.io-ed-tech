@@ -3,7 +3,7 @@ import { AppContext } from "../../context";
 import '../styles/disable.css'
 
 const Options = ({ setState, state, actionProvider }) => {
-    const { topic, questionNumber, wrongAnswer, askingQuestions } = state
+    const { topic, questionNumber, wrongAnswer, askingQuestions, followUp, subQuestions } = state
     const globalState = useContext(AppContext)
 
     useEffect(() => {
@@ -11,12 +11,14 @@ const Options = ({ setState, state, actionProvider }) => {
             .then((res) => res.json())
             .then((data) => setState(prev => ({
                 ...prev,
-                allQuestions: data.questions
+                allQuestions: data.questions,
+                subjects: data.subjects,
+                subQuestions: data.sub_questions
             })))
     }, [setState])
 
     useEffect(() => {
-        if (topic && Array.isArray(topic)) {
+        if (topic && Array.isArray(topic) && !followUp) {
             try {
                 actionProvider.askQuestion(topic[questionNumber].Question)
             }
@@ -25,6 +27,16 @@ const Options = ({ setState, state, actionProvider }) => {
             }
         }
     }, [topic, questionNumber])
+
+    useEffect(() => {
+        if (followUp) {
+            try {
+                actionProvider.askSubQuestion(subQuestions.find((q) => q.frn_question_id === topic[questionNumber].question_id)?.Question)
+            } catch (error) {
+                console.error('error while asking followup', error.message)
+            }
+        }
+    }, [followUp])
 
     useEffect(() => {
         if (askingQuestions && wrongAnswer) {
@@ -42,7 +54,7 @@ const Options = ({ setState, state, actionProvider }) => {
         }
     }, [askingQuestions, wrongAnswer])
 
-    const setATopic = (t) => {
+    const setATopic = (t, link) => {
         setState(prev => ({
             ...prev,
             topic: t,
@@ -50,7 +62,7 @@ const Options = ({ setState, state, actionProvider }) => {
             questionNumber: 0,
 
         }))
-        // globalState.setIframeSrc(t[0].YLink)
+        globalState.setIframeSrc(link)
         remove_click()
     }
 
@@ -60,31 +72,22 @@ const Options = ({ setState, state, actionProvider }) => {
             btn[i].classList.add("disable")
         }
     }
-    const options = [
-        {
-            text: 'Shingles Vaccine',
-            handler: () => setATopic(state.allQuestions["Shingles Vaccine"]),
-            id: 1,
-        },
-        {
-            text: "Flu Vaccine",
-            handler: () => setATopic(state.allQuestions["Flu Vaccine"]),
-            id: 2
-        },
-        {
-            text: "Pneumonia Vaccine",
-            handler: () => setATopic(state.allQuestions["Pneumonia Vaccine"]),
-            id: 3
-        },
-    ];
 
-
-    const buttonsMarkup = options.map((option) => (
-        <button key={option.id} onClick={option.handler} className="option-button">
-            {option.text}
-        </button>
-    ))
-    return <div className="options-container">{buttonsMarkup}</div>
+    return (
+        <div className="options-container">
+            { state.subjects && state.allQuestions && (
+                state.subjects.map((s) => (
+                    <button
+                        key={`btn${s.subject_id}`} 
+                        className="option-button"
+                        onClick={() => setATopic(state.allQuestions[s.name], s.subject_link)}
+                    >
+                        {s.name}
+                    </button>
+                ))
+            )}
+        </div>
+    )
 }
 
 export default Options;
