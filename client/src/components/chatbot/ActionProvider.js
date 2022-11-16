@@ -34,19 +34,29 @@ class ActionProvider {
       ...prev,
       askingQuestions: true
     }))
-    const message = this.createChatBotMessage(`${q}?`)
+    const message = this.createChatBotMessage(`${q}`)
+    this.addMessageToState(message)
+  }
+
+  askSubQuestion = (q) => {
+    const message = this.createChatBotMessage(`${q}`)
     this.addMessageToState(message)
   }
 
   wrongAnswer = () => {
     // when this action is called, askingQuestions is changed to false
+    const followUp = !this.stateRef.followUp
     this.setState(prev => ({
       ...prev,
-      askingQuestions: false,
-      wrongAnswer: true
+      askingQuestions: followUp,
+      wrongAnswer: true,
+      followUp
     }))
     // Added a small message when an incorrect answer is given and how to proceed
-    const message = this.createChatBotMessage('Incorrect. Type "continue" to proceed', 'wrongAnswer')
+    const message = followUp
+      ? this.createChatBotMessage('Incorrect, try a re-worded question', 'wrongAnswer')
+      : this.createChatBotMessage('Incorrect. Type "continue" to proceed', 'wrongAnswer')
+
     this.addMessageToState(message)
   }
 
@@ -56,7 +66,8 @@ class ActionProvider {
     this.setState(prev => ({
       ...prev,
       askingQuestions: true,
-      wrongAnswer: true
+      wrongAnswer: false,
+      followUp: false
     }))
     const message = this.createChatBotMessage("Correct! Next question...")
     this.addMessageToState(message)

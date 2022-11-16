@@ -5,15 +5,19 @@ const config = {
     botName: "Immunize.io Bot",
     initialMessages: [
         createChatBotMessage(
-            `Hello, what would you like to learn?`, 
+            `Hello, what would you like to learn?`,
             { widget: "options" }
         )
     ],
     state: {
         askingQuestions: false,
+        wrongAnswer: false,
+        followUp: false,
         questionNumber: null,
+        subjects: null,
         allQuestions: null,
-        topic: null
+        topic: null,
+        subQuestions: null
     },
     widgets : [
         {
