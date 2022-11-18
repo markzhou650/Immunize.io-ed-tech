@@ -5,8 +5,8 @@ import "./styles/admin.css";
 
 function Admin() {
   const [fields, updateFields] = useState({
-    subject: "Addition",
-    question: "1+1",
+    subject: "Shingles",
+    question: "How many vaccines are available?",
     answer: "2",
   });
 
