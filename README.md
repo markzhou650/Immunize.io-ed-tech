@@ -42,13 +42,46 @@ For more information, refer to the official React Chatbot Kit docs:
 https://fredrikoseberg.github.io/react-chatbot-kit-docs/docs/
 
 # Iframe:
-In `Iframe.js`, the iframe container is created and exported, allowing for it to be imported into other files. `Container.js` imports the iframe container, allowing it to be displayed on the main page. It initially displays http://learning.immunize.io/. 
+
+In `Iframe.js`, the iframe container is created and exported, allowing for it to be imported into other files. `Container.js` imports the iframe container, allowing it to be displayed on the main page. It initially displays http://learning.immunize.io/.
 
 When a topic is chosen by a user, the Iframe will automatically change to the related course content page. Users will have to sign in to see the course content.
 
 <!-- feel free to add/remove/change things I wrote for this part -->
 
+# MySQL Database
 
+The MySQL database should contain three tables: **subjects**, **questions**, and **sub_questions**.
+The database should look like this:
+![Database Schema](/server/docs/database_schema.png "Database Schema")
+
+## Table Schemas
+
+### subjects
+
+| Field        | Type         | Null | Key     | Extra          |
+| ------------ | ------------ | ---- | ------- | -------------- |
+| subject_id   | int          | NO   | Primary | auto_increment |
+| name         | varchar(45)  | NO   |         |                |
+| subject_link | varchar(100) | NO   |         |                |
+
+### questions
+
+| Field          | Type         | Null | Key     | Extra          |
+| -------------- | ------------ | ---- | ------- | -------------- |
+| question_id    | int          | NO   | Primary | auto_increment |
+| Question       | varchar(200) | NO   |         |                |
+| Answer         | varchar(100) | NO   |         |                |
+| frn_subject_id | int          | NO   | Foreign |                |
+
+### sub_questions
+
+| Field           | Type         | Null | Key     | Extra          |
+| --------------- | ------------ | ---- | ------- | -------------- |
+| sub_question_id | int          | NO   | Primary | auto_increment |
+| Question        | varchar(200) | NO   |         |                |
+| Answer          | varchar(100) | NO   |         |                |
+| frn_question_id | int          | NO   | Foreign |                |
 
 <!-- todo in docs: -->
 <!-- server, admin, mysql -->
