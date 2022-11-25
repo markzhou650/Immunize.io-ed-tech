@@ -49,6 +49,20 @@ When a topic is chosen by a user, the Iframe will automatically change to the re
 
 <!-- feel free to add/remove/change things I wrote for this part -->
 
+# Admin
+
+The admin page provides a way to add data through a form. We chose to use Formik to handle our data. 
+
+To add data, the user can press the edit button and input values of the new question. The user can then save, which will add the question to the MySQL database, or cancel, which will close the form.
+
+```adminForm.js``` exports the form, which is used in ```admin.js```. 
+
+```admin.js``` creates a container for the Formik Form and its current values. It gets exported to ```app.js```
+
+Source websites: \
+https://github.com/ekaleonardo619/form-toggle-edit-formik \
+https://blog.devgenius.io/reactjs-form-editable-473e48fb6c9e
+
 # MySQL Database
 
 The MySQL database should contain three tables: **subjects**, **questions**, and **sub_questions**.
@@ -85,4 +99,7 @@ The database should look like this:
 | frn_question_id | int          | NO   | Foreign |                |
 
 <!-- todo in docs: -->
-<!-- server, admin, mysql -->
+<!-- server -->
+
+
+
