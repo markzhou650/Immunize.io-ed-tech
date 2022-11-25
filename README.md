@@ -41,5 +41,14 @@ In `MessageParser.js`, this contains the logic that parses the user's input. It 
 For more information, refer to the official React Chatbot Kit docs:
 https://fredrikoseberg.github.io/react-chatbot-kit-docs/docs/
 
+# Iframe:
+In `Iframe.js`, the iframe container is created and exported, allowing for it to be imported into other files. `Container.js` imports the iframe container, allowing it to be displayed on the main page. It initially displays http://learning.immunize.io/. 
+
+When a topic is chosen by a user, the Iframe will automatically change to the related course content page. Users will have to sign in to see the course content.
+
+<!-- feel free to add/remove/change things I wrote for this part -->
+
+
+
 <!-- todo in docs: -->
-<!-- server, iframe, admin, mysql -->
+<!-- server, admin, mysql -->
