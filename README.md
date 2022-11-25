@@ -53,6 +53,7 @@ When a topic is chosen by a user, the Iframe will automatically change to the re
 
 The MySQL database should contain three tables: **subjects**, **questions**, and **sub_questions**.
 The database should look like this:
+
 ![Database Schema](/server/docs/database_schema.png "Database Schema")
 
 ## Table Schemas
