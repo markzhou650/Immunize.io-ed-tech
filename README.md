@@ -6,6 +6,16 @@
 
 Chris Lee, Trevor Lee, Sumeet Minhas, Chris Mok, Ravi Walberg, Brian Xian
 
+# Contents:
+
+[About](#about-the-application)
+[Tech Stack](#tech-stack)
+[Chatbot](#chatbot)
+[State](#state)
+[MySQL Database](#mysql-database)
+[iFrame](#iframe)
+[Admin](#admin)
+
 ### To Run:
 
 - Remember to `npm install` in both root and client
@@ -38,32 +48,35 @@ In `ActionProvider.js`, the actions that the bot will perform are performed. The
 
 In `MessageParser.js`, this contains the logic that parses the user's input. It depends on the state of `askingQuestions` and will decide which `ActionProvider` to use based on the state and answer given.
 
+More information about State [here](#state).
+
 For more information, refer to the official React Chatbot Kit docs:
+
 https://fredrikoseberg.github.io/react-chatbot-kit-docs/docs/
 
-# Iframe:
+# State:
 
-In `Iframe.js`, the iframe container is created and exported, allowing for it to be imported into other files. `Container.js` imports the iframe container, allowing it to be displayed on the main page. It initially displays http://learning.immunize.io/.
+A Breakdown of How to Set Topics in the Chatbot:
 
-When a topic is chosen by a user, the Iframe will automatically change to the related course content page. Users will have to sign in to see the course content.
+Chatbot is loaded in `Container.js`, and `Options.js` is loaded as a widget.
 
-<!-- feel free to add/remove/change things I wrote for this part -->
+When you select a topic, `Options.js` sets state within the Chatbot component. It also sets global state to give the iFrame a link (context api).
 
-# Admin
+When you set state, you're setting a topic; there's a use effect hook within `Options.js` that will trigger a function inside `ActionProvider.js`
 
-The admin page provides a way to add data through a form. We chose to use Formik to handle our data. 
+Within `ActionProvider.js`, the `askQuestion` function also sets state and it uses Chatbot methods to load questions.
 
-To add data, the user can press the edit button and input values of the new question. The user can then save, which will add the question to the MySQL database, or cancel, which will close the form.
+`MessageParser.js` runs the function parse everytime a user enters text into the chatbot. `MessageParser.js` has conditions that will decide how to respond to the user input. It responds by calling `ActionProvider.js` which can set state; if you need more control you can create useEffect hooks within `Options.js` to trigger other changes.
 
-```adminForm.js``` exports the form, which is used in ```admin.js```. 
+You can apply this logic to the other app functions because everything works in this cycle.
 
-```admin.js``` creates a container for the Formik Form and its current values. It gets exported to ```app.js```
+A quick overview of how things flow:
 
-Source websites: \
-https://github.com/ekaleonardo619/form-toggle-edit-formik \
-https://blog.devgenius.io/reactjs-form-editable-473e48fb6c9e
+- `MessageParser.js` can only read things and respond to `ActionProvider.js`
+- `ActionProvider.js` has access to state and can write messages
+- `Options.js` is a custom react component
 
-# MySQL Database
+# MySQL Database:
 
 The MySQL database should contain three tables: **subjects**, **questions**, and **sub_questions**.
 The database should look like this:
@@ -98,20 +111,27 @@ The database should look like this:
 | Answer          | varchar(100) | NO   |         |                |
 | frn_question_id | int          | NO   | Foreign |                |
 
+# iFrame:
 
-A Breakdown of How to Set Topics in the Chatbot:
+In `Iframe.js`, the iframe container is created and exported, allowing for it to be imported into other files. `Container.js` imports the iframe container, allowing it to be displayed on the main page. It initially displays http://learning.immunize.io/.
 
-Chatbot is loaded in Container.js, and Options.js is loaded as a widget.
-When you select a topic, options.js sets state within the Chatbot component. It also sets global state to give the iFrame a link (context api). When you set state, you're setting a topic; there's a use effect hook within options.js that will trigger a function inside actionProvider.js
+When a topic is chosen by a user, the Iframe will automatically change to the related course content page. Users will have to sign in to see the course content.
 
-Within ActionProvider.js, the askQuestion function also sets state and it uses Chatbot methods to load questions. MessageParser.js runs the function parse everytime a user enters text into the chatbot. MessageParser.js has conditions that will decide how to respond to the user input. It responds by calling ActionProvider.js which can set state; if you need more control you can create useEffect hooks within options.js to trigger other changes.
+<!-- feel free to add/remove/change things I wrote for this part -->
 
-You can apply this logic to the other app functions because everything works in this cycle.
+# Admin:
 
-A quick overview of how things flow:
--MessageParser.js can only read things and respond to ActionProvider.js
--ActionProvider.js has access to state and can write messages
--Options.js is a custom react component
+The admin page provides a way to add data through a form. We chose to use Formik to handle our data.
+
+To add data, the user can press the edit button and input values of the new question. The user can then save, which will add the question to the MySQL database, or cancel, which will close the form.
+
+`adminForm.js` exports the form, which is used in `admin.js`.
+
+`admin.js` creates a container for the Formik Form and its current values. It gets exported to `app.js`
+
+Source websites: \
+https://github.com/ekaleonardo619/form-toggle-edit-formik \
+https://blog.devgenius.io/reactjs-form-editable-473e48fb6c9e
 
 <!-- todo in docs: -->
 <!-- server --
