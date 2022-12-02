@@ -8,7 +8,6 @@ export default function Header() {
         <ul>
           <li>
             <Link to="/">Home</Link>
-            <Link to="/admin">Admin</Link>
           </li>
         </ul>
       </nav>

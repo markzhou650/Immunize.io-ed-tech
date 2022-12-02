@@ -15,6 +15,7 @@ app.use(cors());
 
 const connection = mysql.createConnection({
   host: process.env.HOST,
+  port: 3306,
   database: process.env.DB,
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PWD,
@@ -61,7 +62,7 @@ app.post("/questions", async (req, res) => {
   }
 });
 
-app.post("/createquestion", async(req, res) => {
+app.post("/createquestion", async (req, res) => {
   connection.query(
     "INSERT INTO questions (Question, Answer, frn_subject_id) VALUES (?, ?, ?);",
     [req.body.question, req.body.answer, subjectId[0].subject_id],
@@ -70,13 +71,23 @@ app.post("/createquestion", async(req, res) => {
       res.send(results);
     }
   );
-})
+});
 
 app.post("/read", async (req, res) => {
-  connection.query("SELECT * FROM questions;", (error, results) =>{
+  connection.query("SELECT * FROM questions;", (error, results) => {
     res.send(results);
-  })
-})
+  });
+});
+
+app.get("/api/questions", async (req, res) => {
+  connection.query(
+    "SELECT Question, Answer FROM questions UNION SELECT Question, Answer FROM sub_questions;",
+    (error, results, fields) => {
+      if (error) throw error;
+      res.send(results);
+    }
+  );
+});
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
