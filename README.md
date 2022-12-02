@@ -8,13 +8,13 @@ Chris Lee, Trevor Lee, Sumeet Minhas, Chris Mok, Ravi Walberg, Brian Xian
 
 # Contents:
 
-[About](#about-the-application)
-[Tech Stack](#tech-stack)
-[Chatbot](#chatbot)
-[State](#state)
-[MySQL Database](#mysql-database)
-[iFrame](#iframe)
-[Admin](#admin)
+- [About](#about-the-application)
+- [Tech Stack](#tech-stack)
+- [Chatbot](#chatbot)
+- [State](#state)
+- [MySQL Database](#mysql-database)
+- [iFrame](#iframe)
+- [Admin](#admin)
 
 ### To Run:
 
