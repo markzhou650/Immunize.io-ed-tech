@@ -12,6 +12,7 @@ Chris Lee, Trevor Lee, Sumeet Minhas, Chris Mok, Ravi Walberg, Brian Xian
 - [Tech Stack](#tech-stack)
 - [Chatbot](#chatbot)
 - [State](#state)
+- [Server API Endpoints](#server-api-endpoints)
 - [MySQL Database](#mysql-database)
 - [iFrame](#iframe)
 - [Admin](#admin)
@@ -76,6 +77,15 @@ A quick overview of how things flow:
 - `ActionProvider.js` has access to state and can write messages
 - `Options.js` is a custom react component
 
+# Server API Endpoints:
+
+The application uses the built-in `.fetch()` method to access the topics, questions and answers from the MySQL database from various endpoints. 
+
+| Method |  Endpoint  |                                 Result                                 |
+|--------|------------|------------------------------------------------------------------------|
+|  GET   | /questions | Returns Topics, Questions and Sub Questions tables                     |
+|  POST  | /questions | Inserts new questions with their topic and answer into Questions table |
+
 # MySQL Database:
 
 The MySQL database should contain three tables: **subjects**, **questions**, and **sub_questions**.
@@ -117,8 +127,6 @@ In `Iframe.js`, the iframe container is created and exported, allowing for it to
 
 When a topic is chosen by a user, the Iframe will automatically change to the related course content page. Users will have to sign in to see the course content.
 
-<!-- feel free to add/remove/change things I wrote for this part -->
-
 # Admin:
 
 The admin page provides a way to add data through a form. We chose to use Formik to handle our data.
@@ -132,6 +140,3 @@ To add data, the user can press the edit button and input values of the new ques
 Source websites: \
 https://github.com/ekaleonardo619/form-toggle-edit-formik \
 https://blog.devgenius.io/reactjs-form-editable-473e48fb6c9e
-
-<!-- todo in docs: -->
-<!-- server --
